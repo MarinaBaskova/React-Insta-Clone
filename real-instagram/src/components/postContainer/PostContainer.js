@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const PostContainer = (props) => {
 	return (
-		<div>
+		<div className="postContainer">
 			<Post
 				id={props.id}
 				username={props.post.username}
@@ -19,7 +19,21 @@ const PostContainer = (props) => {
 };
 
 PostContainer.propTypes = {
-	post: PropTypes.object
+	post: PropTypes.shape({
+		id: PropTypes.string,
+		username: PropTypes.string,
+		thumbnailUrl: PropTypes.string,
+		imageUrl: PropTypes.string,
+		likes: PropTypes.number,
+		timestamp: PropTypes.string,
+		comments: PropTypes.arrayOf(
+			PropTypes.shape({
+				id: PropTypes.string,
+				username: PropTypes.string,
+				text: PropTypes.string
+			})
+		)
+	})
 };
 
 export default PostContainer;
