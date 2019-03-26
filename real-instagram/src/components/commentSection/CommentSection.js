@@ -6,10 +6,10 @@ const CommentSection = (props) => {
 	return (
 		<div className="comment-section">
 			{props.comments.map((obj) => <Comment username={obj.username} text={obj.text} key={obj.id} id={obj.id} />)}
+			<p>{props.timestamp}</p>
 			<form>
 				<input type="text" placeholder="Add a comment..." />
 			</form>
-			<p>{props.timestamp}</p>
 		</div>
 	);
 };
