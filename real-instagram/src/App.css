@@ -137,13 +137,13 @@ table {
 }
 img {
 	width: 100%;
+	max-width: 640px;
 	height: auto;
 }
 
 .app {
 	margin: 0 auto;
-	width: 900px;
+	width: 640px;
 	display: flex;
 	flex-direction: column;
-	border: 2px solid red;
 }
