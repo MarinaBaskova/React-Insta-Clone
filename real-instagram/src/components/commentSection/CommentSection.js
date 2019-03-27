@@ -4,20 +4,49 @@ import PropTypes from 'prop-types';
 import './CommentSection.css';
 import dots from '../../instaImg/dots.svg';
 
-const CommentSection = (props) => {
-	return (
-		<div className="commentSection">
-			{props.comments.map((obj) => <Comment username={obj.username} text={obj.text} key={obj.id} id={obj.id} />)}
-			<p>{props.timestamp}</p>
-			<div className="addComment">
-				<form>
-					<input className="addCommentInput" type="text" placeholder="Add a comment..." />
-				</form>
-				<img className="dots" src={dots} alt="add to comments tree dots" />
+class CommentSection extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			newCommentText: ''
+		};
+	}
+
+	handleChanges = (e) => {
+		this.setState({ newCommentText: e.target.value });
+	};
+
+	submitComment = (e) => {
+		e.preventDefault();
+		this.props.newCommentSubmitted(this.state.newCommentText);
+		console.log(this.props.comments);
+		this.setState({ newCommentText: '' });
+	};
+
+	render() {
+		return (
+			<div className="commentSection">
+				{this.props.comments.map((comment) => (
+					<Comment username={comment.username} text={comment.text} key={comment.id} id={comment.id} />
+				))}
+				<p>{this.props.timestamp}</p>
+				<div className="addComment">
+					<form onSubmit={this.submitComment}>
+						<input
+							className="addCommentInput"
+							type="text"
+							placeholder="Add a comment..."
+							name="newCommentText"
+							value={this.state.newCommentText}
+							onChange={this.handleChanges}
+						/>
+					</form>
+					<img className="dots" src={dots} alt="add to comments tree dots" />
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
 
 CommentSection.propTypes = {
 	comments: PropTypes.arrayOf(

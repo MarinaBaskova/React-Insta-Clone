@@ -13,7 +13,12 @@ const Post = (props) => {
 			</div>
 			<img src={props.image} />
 			<div className="postFooterTop">
-				<img className="postHeart" alt="heart icon" src={postHeart} />
+				<img
+					onClick={() => props.postLiked(props.post)}
+					className="postHeart"
+					alt="heart icon"
+					src={postHeart}
+				/>
 				<img className="commentIcon" alt="comment icon" src={comment} />
 			</div>
 			<div className="postFooterBottom">

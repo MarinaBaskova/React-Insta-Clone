@@ -6,25 +6,49 @@ import compass from '../../instaImg/searchBarCompass.png';
 import heart from '../../instaImg/searchBarHeart.png';
 import user from '../../instaImg/user.png';
 
-const SearchBar = (props) => {
-	return (
-		<div className="searchBar">
-			<div className="searchBarLeft">
-				<img className="camera" alt="camera" src={camera} />
-				<img className="instagramLogo" alt="instagram logo" src={logo} />
+class SearchBar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			searchText: ''
+		};
+	}
+
+	handleChanges = (e) => {
+		this.setState({ searchText: e.target.value });
+	};
+
+	searchSubmitted = (e) => {
+		e.preventDefault();
+		this.props.searchUpdated(this.state.searchText);
+	};
+
+	render() {
+		return (
+			<div className="searchBar">
+				<div className="searchBarLeft">
+					<img className="camera" alt="camera" src={camera} />
+					<img className="instagramLogo" alt="instagram logo" src={logo} />
+				</div>
+				<div className="searchBarform">
+					<form onSubmit={this.searchSubmitted}>
+						<input
+							className="inputSearch"
+							type="text"
+							placeholder="Search"
+							onChange={this.handleChanges}
+							value={this.state.searchText}
+						/>
+					</form>
+				</div>
+				<div className="searchBarRight">
+					<img className="compass" alt="compass" src={compass} />
+					<img className="heartSearch" alt="heart" src={heart} />
+					<img className="profileSearch" alt="profile" src={user} />
+				</div>
 			</div>
-			<div className="searchBarform">
-				<form>
-					<input className="inputSearch" type="text" placeholder="Search" />
-				</form>
-			</div>
-			<div className="searchBarRight">
-				<img className="compass" alt="compass" src={compass} />
-				<img className="heartSearch" alt="heart" src={heart} />
-				<img className="profileSearch" alt="profile" src={user} />
-			</div>
-		</div>
-	);
-};
+		);
+	}
+}
 
 export default SearchBar;
