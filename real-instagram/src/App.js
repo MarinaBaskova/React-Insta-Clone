@@ -4,17 +4,19 @@ import PostContainer from './components/postContainer/PostContainer';
 import SearchBar from './components/searchBar/SearchBar';
 import PostsPage from './components/postContainer/PostsPage';
 import Authenticate from './authentication/Authenticate';
-
+import Login from './components/login/Login';
 import './App.css';
 
-const ComponentFromWithAuthenticate = Authenticate(PostsPage);
+const ComponentFromWithAuthenticate = Authenticate(PostsPage)(Login);
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			instaData: [],
-			searching: ''
+			searching: '',
+			loggedIn: false,
+			username: null
 		};
 	}
 
