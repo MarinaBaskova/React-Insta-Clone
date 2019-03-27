@@ -14,9 +14,9 @@ class SearchBar extends Component {
 		};
 	}
 
-	handleChanges = (e) => {
-		this.setState({ searchText: e.target.value });
-	};
+	// handleChanges = (e) => {
+	// 	this.setState({ searchText: e.target.value });
+	// };
 
 	searchSubmitted = (e) => {
 		e.preventDefault();
@@ -36,8 +36,8 @@ class SearchBar extends Component {
 							className="inputSearch"
 							type="text"
 							placeholder="Search"
-							onChange={this.handleChanges}
-							value={this.state.searchText}
+							onChange={this.props.searchHandler}
+							value={this.props.searching}
 						/>
 					</form>
 				</div>

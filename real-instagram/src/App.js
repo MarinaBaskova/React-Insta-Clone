@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import data from './dummy-data';
 import PostContainer from './components/postContainer/PostContainer';
 import SearchBar from './components/searchBar/SearchBar';
+import PostsPage from './components/postContainer/PostsPage';
+import Authenticate from './authentication/Authenticate';
 
 import './App.css';
+
+const ComponentFromWithAuthenticate = Authenticate(PostsPage);
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			instaData: []
+			instaData: [],
+			searching: ''
 		};
 	}
 
@@ -62,30 +67,46 @@ class App extends Component {
 		});
 	};
 
-	searchUpdated = (serchText) => {
-		if (serchText === '') {
-			this.setState({ instaData: data });
-		} else {
-			const copiData = this.state.instaData.filter((post) => post.username === serchText);
+	// searchUpdated = (serchText) => {
+	// 	const copiData = [...this.state.instaData]
+	// 	if (serchText === '') {
+	// 		this.setState({ instaData: data });
+	// 	} else {
+	// 		const copiData = this.state.instaData.filter((post) => post.username === serchText);
 
-			this.setState({
-				instaData: copiData
-			});
+	// 		this.setState({
+	// 			instaData: copiData
+	// 		});
+	// 	}
+	// };
+
+	filteredData = () => {
+		// console.log(this.state.instaData);
+		if (this.state.searching === '') {
+			return this.state.instaData;
+		} else {
+			return this.state.instaData.filter((post) => post.username.includes(this.state.searching));
 		}
+	};
+
+	searchHandler = (e) => {
+		console.log(e.target.value);
+		this.setState({ searching: e.target.value });
 	};
 
 	render() {
 		return (
 			<div className="app">
-				<SearchBar searchUpdated={this.searchUpdated} />
-				{this.state.instaData.map((post) => (
-					<PostContainer
-						key={post.id}
-						post={post}
-						newPostCommentSubmitted={this.addNewComment}
-						postLiked={this.postLiked}
-					/>
-				))}
+				<SearchBar
+					searchUpdated={this.searchUpdated}
+					searchHandler={this.searchHandler}
+					secrching={this.state.searching}
+				/>
+				<ComponentFromWithAuthenticate
+					data={this.filteredData()}
+					newPostCommentSubmitted={this.addNewComment}
+					postLiked={this.postLiked}
+				/>
 			</div>
 		);
 	}

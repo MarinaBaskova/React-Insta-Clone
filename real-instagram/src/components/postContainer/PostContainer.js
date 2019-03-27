@@ -26,6 +26,7 @@ const PostContainer = (props) => {
 				postLiked={props.postLiked}
 			/>
 			<CommentSection
+				// id={props.post.id}
 				newCommentSubmitted={newCommentSubmittedHandler}
 				comments={props.post.comments}
 				timestamp={props.post.timestamp}

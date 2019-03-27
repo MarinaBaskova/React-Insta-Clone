@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import postHeart from '../../instaImg/postHeart.svg';
+
 import comment from '../../instaImg/comment.png';
 import './PostContainer.css';
 
