@@ -23,6 +23,12 @@ class SearchBar extends Component {
 		this.props.searchUpdated(this.state.searchText);
 	};
 
+	onClick = () => {
+		localStorage.clear('username');
+		// localStorage.removeItem('username');
+		window.location.reload();
+	};
+
 	render() {
 		return (
 			<div className="searchBar">
@@ -46,6 +52,9 @@ class SearchBar extends Component {
 					<img className="heartSearch" alt="heart" src={heart} />
 					<img className="profileSearch" alt="profile" src={user} />
 				</div>
+				<button onClick={this.onClick} className="logoutBtn">
+					Logout
+				</button>
 			</div>
 		);
 	}

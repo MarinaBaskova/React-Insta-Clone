@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const withAuthenticate = (App) => (LoginPage) => {
+const withAuthenticate = (AppComponent) => (LoginPage) => {
 	return class extends Component {
 		constructor() {
 			super();
@@ -29,7 +29,7 @@ const withAuthenticate = (App) => (LoginPage) => {
 
 		render() {
 			if (this.state.loggedIn) {
-				return <App {...this.props} username={this.state.username} />;
+				return <AppComponent {...this.props} username={this.state.username} />;
 			} else {
 				return (
 					<LoginPage
