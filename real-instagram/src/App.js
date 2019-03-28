@@ -3,8 +3,6 @@ import data from './dummy-data';
 import PostContainer from './components/postContainer/PostContainer';
 import SearchBar from './components/searchBar/SearchBar';
 import PostsPage from './components/postContainer/PostsPage';
-import Authenticate from './authentication/Authenticate';
-import Login from './components/login/Login';
 import './App.css';
 
 class App extends Component {
