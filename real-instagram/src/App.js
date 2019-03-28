@@ -7,8 +7,6 @@ import Authenticate from './authentication/Authenticate';
 import Login from './components/login/Login';
 import './App.css';
 
-const ComponentFromWithAuthenticate = Authenticate(PostsPage)(Login);
-
 class App extends Component {
 	constructor() {
 		super();
@@ -104,7 +102,7 @@ class App extends Component {
 					searchHandler={this.searchHandler}
 					secrching={this.state.searching}
 				/>
-				<ComponentFromWithAuthenticate
+				<PostsPage
 					data={this.filteredData()}
 					newPostCommentSubmitted={this.addNewComment}
 					postLiked={this.postLiked}
