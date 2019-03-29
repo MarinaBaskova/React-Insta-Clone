@@ -5,7 +5,7 @@ const PostsPage = (props) => {
 	console.log(props.data);
 	return (
 		<div>
-			{props.data.length &&
+			{props.data.length ? (
 				props.data.map((post) => (
 					<PostContainer
 						key={post.id}
@@ -13,7 +13,8 @@ const PostsPage = (props) => {
 						newPostCommentSubmitted={props.newPostCommentSubmitted}
 						postLiked={props.postLiked}
 					/>
-				))}
+				))
+			) : null}
 		</div>
 	);
 };

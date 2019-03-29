@@ -18,6 +18,7 @@ class App extends Component {
 
 	componentDidMount() {
 		setTimeout(() => {
+			debugger;
 			this.setState({ instaData: data });
 		}, 1000);
 	}
