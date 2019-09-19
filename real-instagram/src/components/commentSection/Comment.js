@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
 import UserNameReusable from '../styles/ReusableStyle';
 
 const Comment = (props) => {

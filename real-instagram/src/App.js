@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import data from './dummy-data';
-import PostContainer from './components/postContainer/PostContainer';
 import SearchBar from './components/searchBar/SearchBar';
 import PostsPage from './components/postContainer/PostsPage';
 import './App.css';
@@ -18,7 +17,6 @@ class App extends Component {
 
 	componentDidMount() {
 		setTimeout(() => {
-			debugger;
 			this.setState({ instaData: data });
 		}, 1000);
 	}
@@ -28,7 +26,7 @@ class App extends Component {
 			if (post === postWithNewComment) {
 				const newComment = {
 					id: Date.now().toString(),
-					username: 'reactjs',
+					username: localStorage.getItem('username'),
 					text: newCommentText
 				};
 				const newComments = [ ...post.comments, newComment ];
@@ -80,7 +78,6 @@ class App extends Component {
 	// };
 
 	filteredData = () => {
-		// console.log(this.state.instaData);
 		if (this.state.searching === '') {
 			return this.state.instaData;
 		} else {
@@ -89,7 +86,6 @@ class App extends Component {
 	};
 
 	searchHandler = (e) => {
-		console.log(e.target.value);
 		this.setState({ searching: e.target.value });
 	};
 

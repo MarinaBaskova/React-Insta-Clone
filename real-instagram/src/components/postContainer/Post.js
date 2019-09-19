@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import postHeart from '../../instaImg/postHeart.svg';
 
 import comment from '../../instaImg/comment.png';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import UserNameReusable from '../styles/ReusableStyle';
 
 const PostWrapper = styled.div`
@@ -27,8 +27,6 @@ const UserAvatar = styled.img`
 	margin-left: 10px;
 	margin-right: 10px;
 `;
-
-// const UserName = styled.span`font-weight: bold;`;
 
 const PostFooterTop = styled.div`
 	display: flex;

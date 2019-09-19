@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../../instaImg/instagram.jpg';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const LoginContainer = styled.div`
 	width: 100%;

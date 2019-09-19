@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PostContainer from './PostContainer';
 
 const PostsPage = (props) => {
-	console.log(props.data);
 	return (
 		<div>
 			{props.data.length ? (

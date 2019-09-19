@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import dots from '../../instaImg/dots.svg';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const CommentSectionWrapper = styled.div`
 	display: flex;
@@ -53,7 +53,6 @@ class CommentSection extends Component {
 	submitComment = (e) => {
 		e.preventDefault();
 		this.props.newCommentSubmitted(this.state.newCommentText);
-		console.log(this.props.comments);
 		this.setState({ newCommentText: '' });
 	};
 
