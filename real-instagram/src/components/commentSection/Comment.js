@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import './CommentSection.css';
+
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import UserNameReusable from '../styles/ReusableStyle';
 
 const Comment = (props) => {
 	return (
 		<div>
-			<span className="userNameComment">{props.username}</span> {props.text}
+			<UserNameReusable>{props.username}</UserNameReusable> {props.text}
 		</div>
 	);
 };

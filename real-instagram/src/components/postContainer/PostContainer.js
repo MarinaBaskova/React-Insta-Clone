@@ -2,19 +2,37 @@ import React, { Component } from 'react';
 import CommentSection from '../commentSection/CommentSection';
 import Post from '../postContainer/Post';
 import PropTypes from 'prop-types';
-import './PostContainer.css';
+import styled, { css } from 'styled-components';
+import UserNameReusable from '../styles/ReusableStyle';
+
+import Loader from 'react-loader-spinner';
 
 const PostContainer = (props) => {
+	// if (Object.keys(props.post).length === 0) {
+	// 	return <Loader type="Rings" color="#somecolor" height={80} width={80} />;
+	// }
+
+	const newCommentSubmittedHandler = (newCommentText) => {
+		props.newPostCommentSubmitted(newCommentText, props.post);
+	};
+
 	return (
 		<div className="postContainer">
 			<Post
-				id={props.id}
+				id={props.post.id}
 				username={props.post.username}
 				thumbnail={props.post.thumbnailUrl}
 				image={props.post.imageUrl}
 				likes={props.post.likes}
+				post={props.post}
+				postLiked={props.postLiked}
 			/>
-			<CommentSection comments={props.post.comments} timestamp={props.post.timestamp} />
+			<CommentSection
+				// id={props.post.id}
+				newCommentSubmitted={newCommentSubmittedHandler}
+				comments={props.post.comments}
+				timestamp={props.post.timestamp}
+			/>
 		</div>
 	);
 };
